@@ -18,7 +18,7 @@ To set up and use the weather app, follow these steps:
 1. Clone the repository to your local machine:
 
    ```
-   git clone <repository_url>
+   git clone https://github.com/Kyogrq/weather-app
    ```
 
 2. Navigate to the project directory:
