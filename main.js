@@ -50,7 +50,6 @@ function updateBackgroundVideo(weatherCondition) {
     const videos = {
         'Rain': 'assets/rain.mp4',
         'Clouds': 'assets/cloudy.mp4',
-        'Clear': 'assets/sunny.mp4',
         'Snow': 'assets/snow.mp4'
     };
 
