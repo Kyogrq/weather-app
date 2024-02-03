@@ -1,5 +1,5 @@
 // API key for OpenWeatherMap
-const apiKey = 'ENTER YOUR API KEY';
+const apiKey = '2a35383fccffeec23abe16dbb0d4415a';
 
 // Function to fetch weather data from OpenWeatherMap API
 async function getWeatherData(city) {
@@ -37,9 +37,19 @@ function updateWeatherUI(data) {
         weatherContainer.innerHTML = weatherHTML;
         document.querySelector('.weather-info').classList.add('show');
         document.querySelector('.background-video').style.display = 'block';
+        fadeInBackgroundVideo(); // Fade in the background video
     } else {
         weatherContainer.innerHTML = '<p>Weather data not available</p>';
     }
+}
+
+// Function to fade in the background video
+function fadeInBackgroundVideo() {
+    const videoElement = document.querySelector('.background-video');
+    videoElement.style.opacity = '0'; // Initially set opacity to 0
+    setTimeout(() => {
+        videoElement.style.opacity = '1'; // Fade in the video after a short delay
+    }, 1000); // Adjust the delay as needed
 }
 
 // Function to update the background video based on weather condition
@@ -49,15 +59,21 @@ function updateBackgroundVideo(weatherCondition) {
     // Define the URLs of the background videos for different weather conditions
     const videos = {
         'Rain': 'assets/rain.mp4',
-        'Clouds': 'assets/cloudy.mp4',
-        'Snow': 'assets/snow.mp4'
+        'Cloud': 'assets/cloudy.mp4',
+        'Snow': 'assets/snow.mp4',
+        'Clear': 'assets/cloudy.mp4'
     };
+
+    console.log('Weather Condition:', weatherCondition); // Log the weather condition
 
     // Check if the weather condition exists in the videos object
     if (weatherCondition in videos) {
         const videoUrl = videos[weatherCondition];
+        console.log('Video URL:', videoUrl); // Log the video URL
         videoElement.src = videoUrl;
         videoElement.classList.add('show'); // Show the background video
+    } else {
+        console.log('Weather condition not found:', weatherCondition); // Log if the weather condition is not found
     }
 }
 
