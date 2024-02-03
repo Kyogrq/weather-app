@@ -64,16 +64,20 @@ function updateBackgroundVideo(weatherCondition) {
         'Clear': 'assets/cloudy.mp4'
     };
 
-    console.log('Weather Condition:', weatherCondition); // Log the weather condition
-
     // Check if the weather condition exists in the videos object
-    if (weatherCondition in videos) {
-        const videoUrl = videos[weatherCondition];
-        console.log('Video URL:', videoUrl); // Log the video URL
-        videoElement.src = videoUrl;
-        videoElement.classList.add('show'); // Show the background video
-    } else {
-        console.log('Weather condition not found:', weatherCondition); // Log if the weather condition is not found
+    let foundMatch = false;
+    for (const condition in videos) {
+        if (weatherCondition.toLowerCase().includes(condition.toLowerCase())) {
+            const videoUrl = videos[condition];
+            videoElement.src = videoUrl;
+            videoElement.classList.add('show'); // Show the background video
+            foundMatch = true;
+            break;
+        }
+    }
+
+    if (!foundMatch) {
+        console.log('Weather condition not found:', weatherCondition);
     }
 }
 
