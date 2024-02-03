@@ -16,10 +16,9 @@ const observer1 = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     console.log('entry');
     if (entry.isIntersecting) {
-      // Add a delay of 3 seconds before showing the weather button
       setTimeout(() => {
         entry.target.classList.add('weather-button-show');
-      }, 2000); // 3000 milliseconds = 3 seconds
+      }, 2000); 
     } else {
       entry.target.classList.remove('weather-button-show');
     }
